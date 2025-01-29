@@ -1,0 +1,65 @@
+
+{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mohammad Soban",
+    "url": "https://mohammadsoban.vercel.app/",
+    "jobTitle": "Software Developer & Prompt Engineer",
+    "image": "https://mohammadsoban.vercel.app/icon2.png",
+    "description": "Computer Science professional specializing in full-stack development, prompt engineering, and AI",
+    "skills": [
+      "Prompt Engineering",
+      "React",
+      "TypeScript",
+      "Python",
+      "Java",
+      "SQL",
+      "Data Analysis",
+      "AI Development",
+      "Microsoft Excel",
+      "MongoDB"
+    ],
+    "knowsAbout": [
+      "Prompt Engineering",
+      "AI Development",
+      "Software Development",
+      "Data Analysis",
+      "Web Development",
+      "Database Management"
+    ],
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Computer Science Student"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/mohammadsoban/",
+      "https://github.com/mo2daso"
+    ],
+    "mainEntity": {
+      "@type": "WebSite",
+      "name": "Mohammad Soban Portfolio",
+      "url": "https://mohammadsoban.vercel.app/",
+      "potentialAction": {
+        "@type": "ContactAction",
+        "target": "mailto:soban.mohammad27@gmail.com",
+        "name": "Contact"
+      }
+    },
+    "workExample": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "Library Management System",
+        "applicationCategory": "Desktop Application",
+        "operatingSystem": "Cross-platform",
+        "programmingLanguage": ["Java", "SQL"]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Syntax Analyzer",
+        "applicationCategory": "Development Tool",
+        "operatingSystem": "Cross-platform",
+        "programmingLanguage": ["Python", "PYQT5"]
+      }
+    ]
+  }
+  
