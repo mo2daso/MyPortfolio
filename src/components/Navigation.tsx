@@ -1,4 +1,3 @@
-// Navigation.tsx
 import React, { useState, useEffect } from 'react';
 import { ThemeToggle } from './ThemeToggle';
 
@@ -10,6 +9,7 @@ interface NavigationProps {
 
 export function Navigation({ darkMode, onThemeToggle, onNavigate }: NavigationProps) {
   const [activeSection, setActiveSection] = useState('home');
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for mobile menu
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,6 +39,7 @@ export function Navigation({ darkMode, onThemeToggle, onNavigate }: NavigationPr
   const handleNavigation = (sectionId: string) => {
     setActiveSection(sectionId);
     onNavigate(sectionId);
+    setIsMenuOpen(false); // Close the menu after navigation on mobile
   };
 
   return (
@@ -63,30 +64,83 @@ export function Navigation({ darkMode, onThemeToggle, onNavigate }: NavigationPr
             </span>
           </div>
 
+          {/* Hamburger Menu for Mobile */}
           <div className="flex items-center space-x-8">
-            {['home', 'about', 'tech-stack', 'projects', 'contact'].map((section) => (
-              <button
-              key={section}
-              onClick={() => handleNavigation(section)}
-              className={`capitalize text-base font-medium tracking-wide
-                transition-all duration-300 relative
-                hover:text-blue-600 dark:hover:text-purple-400
-                focus:outline-none rounded-md px-2 py-1
-                after:content-[''] after:absolute after:w-full after:h-0.5
-                after:bg-blue-600 dark:after:bg-purple-400 after:left-0 after:-bottom-1
-                after:scale-x-0 hover:after:scale-x-100 after:transition-transform
-                after:duration-300 ${
-                  activeSection === section
-                    ? 'text-blue-600 dark:text-purple-400 after:scale-x-100'
-                    : 'text-gray-700 dark:text-gray-300'
-                }`}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="lg:hidden text-gray-700 dark:text-gray-300 focus:outline-none"
             >
-              {section.replace('-', ' ')}
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16m-7 6h7"
+                />
+              </svg>
             </button>
-            ))}
-            <ThemeToggle darkMode={darkMode} onToggle={onThemeToggle} />
+
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center space-x-8">
+              {['home', 'about', 'tech-stack', 'projects', 'contact'].map((section) => (
+                <button
+                  key={section}
+                  onClick={() => handleNavigation(section)}
+                  className={`capitalize text-base font-medium tracking-wide
+                    transition-all duration-300 relative
+                    hover:text-blue-600 dark:hover:text-purple-400
+                    focus:outline-none rounded-md px-2 py-1
+                    after:content-[''] after:absolute after:w-full after:h-0.5
+                    after:bg-blue-600 dark:after:bg-purple-400 after:left-0 after:-bottom-1
+                    after:scale-x-0 hover:after:scale-x-100 after:transition-transform
+                    after:duration-300 ${
+                      activeSection === section
+                        ? 'text-blue-600 dark:text-purple-400 after:scale-x-100'
+                        : 'text-gray-700 dark:text-gray-300'
+                    }`}
+                >
+                  {section.replace('-', ' ')}
+                </button>
+              ))}
+              <ThemeToggle darkMode={darkMode} onToggle={onThemeToggle} />
+            </div>
           </div>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {isMenuOpen && (
+          <div className="lg:hidden bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-lg mt-2">
+            <div className="flex flex-col space-y-4 p-4">
+              {['home', 'about', 'tech-stack', 'projects', 'contact'].map((section) => (
+                <button
+                  key={section}
+                  onClick={() => handleNavigation(section)}
+                  className={`capitalize text-base font-medium tracking-wide
+                    transition-all duration-300 relative
+                    hover:text-blue-600 dark:hover:text-purple-400
+                    focus:outline-none rounded-md px-2 py-1
+                    after:content-[''] after:absolute after:w-full after:h-0.5
+                    after:bg-blue-600 dark:after:bg-purple-400 after:left-0 after:-bottom-1
+                    after:scale-x-0 hover:after:scale-x-100 after:transition-transform
+                    after:duration-300 ${
+                      activeSection === section
+                        ? 'text-blue-600 dark:text-purple-400 after:scale-x-100'
+                        : 'text-gray-700 dark:text-gray-300'
+                    }`}
+                >
+                  {section.replace('-', ' ')}
+                </button>
+              ))}
+              <ThemeToggle darkMode={darkMode} onToggle={onThemeToggle} />
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
