@@ -9,7 +9,7 @@ interface NavigationProps {
 
 export function Navigation({ darkMode, onThemeToggle, onNavigate }: NavigationProps) {
   const [activeSection, setActiveSection] = useState('home');
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for mobile menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,14 +32,14 @@ export function Navigation({ darkMode, onThemeToggle, onNavigate }: NavigationPr
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleNavigation = (sectionId: string) => {
     setActiveSection(sectionId);
     onNavigate(sectionId);
-    setIsMenuOpen(false); // Close the menu after navigation on mobile
+    setIsMenuOpen(false);
   };
 
   return (
@@ -49,7 +49,7 @@ export function Navigation({ darkMode, onThemeToggle, onNavigate }: NavigationPr
           <div className="flex items-center space-x-2">
             <div className="border-2 border-blue-600 dark:border-purple-400 rounded-full p-0.5">
               <img
-                src="/icon.png"
+                src={darkMode ? "/icon2.png" : "/icon.png"}
                 alt="Portfolio Logo"
                 className="w-14 h-14 object-contain rounded-full"
               />
