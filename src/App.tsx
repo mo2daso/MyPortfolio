@@ -1,4 +1,3 @@
-// App.tsx
 import React, { useState, useEffect, useCallback } from 'react';
 import { 
   Download, 
@@ -10,9 +9,6 @@ import {
   Users, 
   Brain, 
   Zap, 
-  BookOpen, 
-  Film, 
-  Gamepad,
   ChevronLeft,
   ChevronRight 
 } from 'lucide-react';
@@ -22,6 +18,7 @@ import { ProfileImage } from './components/ProfileImage';
 import { TechStack } from './components/TechStack';
 import { ContactForm } from './components/ContactForm';
 
+// Interfaces
 interface Project {
   title: string;
   description: string;
@@ -30,13 +27,22 @@ interface Project {
   technologies: string[];
 }
 
+interface Certificate {
+  title: string;
+  image: string;
+  link: string;
+  description: string;
+}
+
 function App() {
+  // State management
   const [darkMode, setDarkMode] = useState(() => 
     window.matchMedia('(prefers-color-scheme: dark)').matches
   );
   const [currentProject, setCurrentProject] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
+  // Effects
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
@@ -69,6 +75,28 @@ function App() {
     }
   ];
 
+  const certificates: Certificate[] = [
+    {
+      title: 'Introduction to Business Analysis',
+      image: '/public/c1.jpg', // Assuming the image is in the public/images folder
+      link: 'https://coursera.org/share/9bd4efd219ae92710f28855a833d99d8',
+      description: 'Coursera - IBM'
+    },
+    {
+      title: 'Foundations of Digital Marketing and E-commerce',
+      image: '/public/c2.jpg', // Assuming the image is in the public/images folder
+      link: 'https://coursera.org/share/ccb9bc6ebdd51020eb4fc6336a265bd4',
+      description: 'Coursera - Google'
+    },
+    {
+      title: 'Attract and Engage Customers with Digital Marketing',
+      image: '/public/c3.jpg', // Assuming the image is in the public/images folder
+      link: 'https://coursera.org/share/721d09116b09b93e760f865646dd9604',
+      description: 'Coursera - Google'
+    }
+  ];
+
+  // Handlers
   const changeProject = useCallback((direction: 'next' | 'prev') => {
     if (isTransitioning) return;
     
@@ -89,15 +117,10 @@ function App() {
     }
   }, [changeProject]);
 
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [handleKeyPress]);
-
   const scrollToSection = useCallback((sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const offset = 80; // Height of the fixed navbar
+      const offset = 80;
       const elementPosition = element.offsetTop - offset;
       window.scrollTo({
         top: elementPosition,
@@ -106,6 +129,11 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [handleKeyPress]);
+
   return (
     <div className={`min-h-screen ${darkMode ? 'dark:bg-gray-900 dark:text-white' : 'bg-white'} transition-colors duration-300`}>
       <Navigation 
@@ -113,8 +141,9 @@ function App() {
         onThemeToggle={() => setDarkMode(!darkMode)} 
         onNavigate={scrollToSection}
       />
+
       {/* Hero Section */}
-      <section id="home" className="pt-32 pb-20 px-4">
+      <section id="home" className="pt-32 pb-20 px-4 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl sm:text-6xl font-bold mb-6">
             <TypeAnimation
@@ -129,7 +158,9 @@ function App() {
                 2000,
                 'Hello, I\'m a Lawyer',
                 2000,
-                'Hello, I\'m a Data Analyst',
+                'Hello, I\'m a Business Analyst',
+                2000,
+                'Hello, I\'m a Digital Marketer',
                 2000
               ]}
               wrapper="span"
@@ -162,7 +193,7 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section id="about" className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">About Me</h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -193,28 +224,17 @@ function App() {
                     <Zap className="w-6 h-6 text-blue-600 dark:text-purple-400" />
                     <span>Quick Learner</span>
                   </div>
-                </div>
-                <a 
-                  href="https://www.linkedin.com/in/mohammadsoban/"
-                  className="text-blue-600 dark:text-purple-400 hover:underline inline-flex items-center mt-4"
-                >
-                  Check out my certifications on LinkedIn <ExternalLink className="w-4 h-4 ml-1" />
-                </a>
-              </div>
-              <div className="space-y-6">
-                <h3 className="text-xl font-semibold">Hobbies</h3>
-                <div className="flex flex-wrap gap-6">
                   <div className="flex items-center space-x-2">
-                    <BookOpen className="w-6 h-6 text-blue-600 dark:text-purple-400" />
-                    <span>Reading</span>
+                    <Zap className="w-6 h-6 text-blue-600 dark:text-purple-400" />
+                    <span>Time Management</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Film className="w-6 h-6 text-blue-600 dark:text-purple-400" />
-                    <span>Binging Shows</span>
+                    <Brain className="w-6 h-6 text-blue-600 dark:text-purple-400" />
+                    <span>Analytical Skills</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Gamepad className="w-6 h-6 text-blue-600 dark:text-purple-400" />
-                    <span>Gaming</span>
+                    <Zap className="w-6 h-6 text-blue-600 dark:text-purple-400" />
+                    <span>Prompt Engineering</span>
                   </div>
                 </div>
               </div>
@@ -223,14 +243,15 @@ function App() {
         </div>
       </section>
 
-       {/* Tech Stack Section with proper ID */}
-       <section id="tech-stack" className="py-20">
+
+        {/* Tech Stack Section */}
+        <section id="tech-stack" className="py-20 bg-gray-50 dark:bg-gray-800">
         <h3 className="text-4xl font-bold mb-12 text-center">Tech Stack</h3>
         <TechStack />
       </section>
       
       {/* Projects Section with improved transitions */}
-      <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section id="projects" className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">Featured Projects</h2>
           <div className="relative overflow-hidden">
@@ -307,65 +328,109 @@ function App() {
         </div>
       </section>
 
-{/* Contact Section */}
-<section id="contact" className="py-10"> {/* Reduced height */}
+      {/* Certificates Section */}
+      <section id="certificates" className="py-20 bg-gray-50 dark:bg-gray-800"> {/* Added background color */}
   <div className="max-w-7xl mx-auto px-4">
-    <h2 className="text-3xl font-bold mb-12 text-center">Get In Touch</h2>
-    <div className="flex flex-col md:flex-row gap-12 items-stretch"> {/* Use flex for equal heights */}
-      {/* Contact Form */}
-      <div className="flex-1"> {/* Ensure it takes equal space */}
-        <ContactForm />
-      </div>
-
-      {/* Right Column (Favorite Quote and Contact Me) */}
-      <div className="flex-1 flex flex-col space-y-6"> {/* Reduced spacing */}
-        {/* Favorite Quote */}
-        <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg h-full flex flex-col justify-center"> {/* Added flex and justify-center */}
-          <h3 className="text-2xl font-bold mb-4 text-center">Favorite Quote</h3>
-          <div className="text-center">
-            <p className="text-blue-600 dark:text-purple-400 italic font-serif text-xl leading-relaxed"> {/* Increased text size to text-xl */}
-              "Nothing Changes if Nothing Changes!"
-            </p>
-            <p className="text-gray-500 dark:text-gray-400 mt-2 font-medium text-sm tracking-wide">
-              — Godfrey The Great
-            </p>
+    <h2 className="text-3xl font-bold mb-12 text-center">Featured Certificates</h2>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {certificates.map((certificate, index) => (
+        <div 
+          key={index} 
+          className="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col"
+        >
+          <img 
+            src={certificate.image} 
+            alt={certificate.title} 
+            className="w-full h-64 object-contain p-4 bg-gray-100 dark:bg-gray-600" // Adjusted height and added padding
+          />
+          <div className="p-6 flex flex-col flex-grow">
+            <h3 className="text-xl font-bold mb-2">{certificate.title}</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">{certificate.description}</p>
+            <a 
+              href={certificate.link}
+              className="text-blue-600 dark:text-purple-400 hover:text-blue-800 dark:hover:text-purple-300 transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Certificate
+            </a>
           </div>
         </div>
-
-        {/* Contact Me */}
-        <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg border border-gray-100 dark:border-gray-600 h-full"> {/* Added h-full */}
-          <h3 className="text-xl font-bold mb-4 text-center">Contact Me</h3>
-          <div className="space-y-4">
-            <div className="flex items-center group">
-              <Mail className="w-6 h-6 mr-4 text-blue-600 dark:text-purple-400 group-hover:scale-110 transition-transform" />
-              <a href="mailto:soban.mohammad27@gmail.com" className="hover:text-blue-600 dark:hover:text-purple-400 transition-colors">
-                soban.mohammad27@gmail.com
-              </a>
-            </div>
-            <div className="flex items-center group">
-              <Linkedin className="w-6 h-6 mr-4 text-blue-600 dark:text-purple-400 group-hover:scale-110 transition-transform" />
-              <a href="https://www.linkedin.com/in/mohammadsoban/" className="hover:text-blue-600 dark:hover:text-purple-400 transition-colors flex items-center">
-                LinkedIn Profile
-                <ExternalLink className="w-4 h-4 ml-1" />
-              </a>
-            </div>
-            <div className="flex items-center group">
-              <Github className="w-6 h-6 mr-4 text-blue-600 dark:text-purple-400 group-hover:scale-110 transition-transform" />
-              <a href="https://github.com/mo2daso" className="hover:text-blue-600 dark:hover:text-purple-400 transition-colors flex items-center">
-                GitHub Profile
-                <ExternalLink className="w-4 h-4 ml-1" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      ))}
+    </div>
+    {/* View More Link */}
+    <div className="flex justify-end mt-8">
+      <a
+        href="https://www.linkedin.com/in/mohammadsoban/details/certifications/"
+        className="flex items-center text-blue-600 dark:text-purple-400 hover:text-blue-800 dark:hover:text-purple-300 transition-colors"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        View More on LinkedIn
+        <ExternalLink className="w-4 h-4 ml-2" />
+      </a>
     </div>
   </div>
 </section>
 
+      {/* Contact Section */}
+      <section id="contact" className="py-20 bg-white dark:bg-gray-900"> {/* Reduced height */}
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-12 text-center">Get In Touch</h2>
+          <div className="flex flex-col md:flex-row gap-12 items-stretch"> {/* Use flex for equal heights */}
+            {/* Contact Form */}
+            <div className="flex-1"> {/* Ensure it takes equal space */}
+              <ContactForm />
+            </div>
+
+            {/* Right Column (Favorite Quote and Contact Me) */}
+            <div className="flex-1 flex flex-col space-y-6"> {/* Reduced spacing */}
+              {/* Favorite Quote */}
+              <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg h-full flex flex-col justify-center"> {/* Added flex and justify-center */}
+                <h3 className="text-2xl font-bold mb-4 text-center">Favorite Quote</h3>
+                <div className="text-center">
+                  <p className="text-blue-600 dark:text-purple-400 italic font-serif text-xl leading-relaxed"> {/* Increased text size to text-xl */}
+                    "Nothing Changes if Nothing Changes!"
+                  </p>
+                  <p className="text-gray-500 dark:text-gray-400 mt-2 font-medium text-sm tracking-wide">
+                    — Godfrey The Great
+                  </p>
+                </div>
+              </div>
+
+              {/* Contact Me */}
+              <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg border border-gray-100 dark:border-gray-600 h-full"> {/* Added h-full */}
+                <h3 className="text-xl font-bold mb-4 text-center">Contact Me</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center group">
+                    <Mail className="w-6 h-6 mr-4 text-blue-600 dark:text-purple-400 group-hover:scale-110 transition-transform" />
+                    <a href="mailto:soban.mohammad27@gmail.com" className="hover:text-blue-600 dark:hover:text-purple-400 transition-colors">
+                      soban.mohammad27@gmail.com
+                    </a>
+                  </div>
+                  <div className="flex items-center group">
+                    <Linkedin className="w-6 h-6 mr-4 text-blue-600 dark:text-purple-400 group-hover:scale-110 transition-transform" />
+                    <a href="https://www.linkedin.com/in/mohammadsoban/" className="hover:text-blue-600 dark:hover:text-purple-400 transition-colors flex items-center">
+                      LinkedIn Profile
+                      <ExternalLink className="w-4 h-4 ml-1" />
+                    </a>
+                  </div>
+                  <div className="flex items-center group">
+                    <Github className="w-6 h-6 mr-4 text-blue-600 dark:text-purple-400 group-hover:scale-110 transition-transform" />
+                    <a href="https://github.com/mo2daso" className="hover:text-blue-600 dark:hover:text-purple-400 transition-colors flex items-center">
+                      GitHub Profile
+                      <ExternalLink className="w-4 h-4 ml-1" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
-      <footer className="bg-white dark:bg-gray-800 py-12 mt-20">
+      <footer className="bg-gray-50 dark:bg-gray-800 py-12 mt-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col items-center space-y-6">
             <div className="flex space-x-6">

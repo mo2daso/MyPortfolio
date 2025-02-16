@@ -1,124 +1,141 @@
-// Tech stack interface
+import React from 'react';
+
 interface TechStackItem {
   name: string;
-  icon: string; // URL to the official logo
+  icon: string;
   color: string;
+  category: 'frontend' | 'backend' | 'languages' | 'tools';
 }
 
-// Tech stack array with official logos
 const techStack: TechStackItem[] = [
-  {
-    name: 'HTML',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
-    color: 'text-orange-500'
-  },
-  {
-    name: 'CSS',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
-    color: 'text-blue-500'
-  },
-  {
-    name: 'JavaScript',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
-    color: 'text-yellow-500'
-  },
-  {
-    name: 'TypeScript',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
-    color: 'text-blue-600'
-  },
+  // Frontend Technologies
   { 
-    name: 'Node.js', 
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
-    color: 'text-green-500' 
+    name: 'Tailwind CSS', 
+    icon: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg',
+    color: 'text-teal-500',
+    category: 'frontend'
   },
   { 
     name: 'React', 
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-    color: 'text-blue-400' 
+    color: 'text-blue-400',
+    category: 'frontend'
+  },
+  {
+    name: 'JavaScript',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+    color: 'text-yellow-500',
+    category: 'frontend'
+  },
+  {
+    name: 'TypeScript',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+    color: 'text-blue-600',
+    category: 'frontend'
+  },
+
+
+  
+  // Backend Technologies
+  { 
+    name: 'Node.js', 
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
+    color: 'text-green-500',
+    category: 'backend'
   },
   { 
-    name: 'Python', 
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
-    color: 'text-blue-500' 
-  },
-  { 
-    name: 'Java', 
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
-    color: 'text-red-500' 
-  },
-  { 
-    name: 'Kotlin', 
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg',
-    color: 'text-purple-500' 
-  },
-  { 
-    name: 'C++', 
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
-    color: 'text-blue-600' 
+    name: 'ASP.NET', 
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg',
+    color: 'text-blue-700',
+    category: 'backend'
   },
   { 
     name: 'SQL', 
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
-    color: 'text-orange-600' 
+    color: 'text-orange-600',
+    category: 'backend'
+  },
+
+  // Programming Languages
+  { 
+    name: 'Python', 
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+    color: 'text-blue-500',
+    category: 'languages'
   },
   { 
-    name: 'MongoDB', 
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
-    color: 'text-green-600' 
+    name: 'Java', 
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
+    color: 'text-red-500',
+    category: 'languages'
   },
   { 
-    name: 'Microsoft Word', 
+    name: 'C++', 
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
+    color: 'text-blue-600',
+    category: 'languages'
+  },
+  { 
+    name: 'C#', 
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg',
+    color: 'text-purple-600',
+    category: 'languages'
+  },
+
+  // Tools
+  { 
+    name: 'Word', 
     icon: 'https://img.icons8.com/color/48/000000/microsoft-word-2019.png',
-    color: 'text-blue-700' 
+    color: 'text-blue-700',
+    category: 'tools'
   },
   { 
-    name: 'Microsoft Excel', 
+    name: 'Excel', 
     icon: 'https://img.icons8.com/color/48/000000/microsoft-excel-2019.png',
-    color: 'text-green-700' 
-  },
-  { 
-    name: 'Microsoft PowerPoint', 
-    icon: 'https://img.icons8.com/color/48/000000/microsoft-powerpoint-2019.png',
-    color: 'text-orange-700' 
-  },
-  { 
-    name: 'Canva', 
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg',
-    color: 'text-blue-400' 
+    color: 'text-green-700',
+    category: 'tools'
   },
   { 
     name: 'Figma', 
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',
-    color: 'text-purple-600' 
+    color: 'text-purple-600',
+    category: 'tools'
   },
   { 
-    name: 'Prompt Engineering', 
-    icon: 'https://img.icons8.com/color/48/000000/artificial-intelligence.png',
-    color: 'text-blue-500' 
+    name: 'Canva', 
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg',
+    color: 'text-blue-400',
+    category: 'tools'
   }
 ];
 
 export function TechStack() {
   return (
-    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 p-4">
-      {techStack.map((tech, index) => (
-        <div
-          key={index}
-          className="flex flex-col items-center"
-        >
-          <div className="w-24 h-24 rounded-lg bg-white dark:bg-gray-700 flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-            <img 
-              src={tech.icon} 
-              alt={tech.name} 
-              className="w-14 h-14" // Increased icon size
-            />
+    <div className="max-w-5xl mx-auto p-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+        {techStack.map((tech, index) => (
+          <div
+            key={index}
+            className="flex flex-col items-center group"
+          >
+            {/* Icon Container */}
+            <div className="w-20 h-20 rounded-full bg-white dark:bg-gray-800 flex items-center justify-center 
+                          shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110
+                          border-2 border-gray-200 dark:border-gray-600 hover:border-blue-500 dark:hover:border-purple-500
+                          group-hover:rotate-6">
+              <img 
+                src={tech.icon} 
+                alt={tech.name} 
+                className="w-12 h-12 group-hover:scale-110 transition-transform duration-300" 
+              />
+            </div>
+            {/* Tech Name */}
+            <span className={`text-sm font-medium text-center mt-2 ${tech.color} opacity-90 group-hover:opacity-100`}>
+              {tech.name}
+            </span>
           </div>
-          <span className={`text-sm font-medium text-center mt-2 ${tech.color}`}>
-            {tech.name}
-          </span>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
