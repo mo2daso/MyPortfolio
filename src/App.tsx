@@ -78,19 +78,19 @@ function App() {
   const certificates: Certificate[] = [
     {
       title: 'Introduction to Business Analysis',
-      image: '/public/c1.jpg', // Assuming the image is in the public/images folder
+      image: '/c1.jpg', // Assuming the image is in the public/images folder
       link: 'https://coursera.org/share/9bd4efd219ae92710f28855a833d99d8',
       description: 'Coursera - IBM'
     },
     {
       title: 'Foundations of Digital Marketing and E-commerce',
-      image: '/public/c2.jpg', // Assuming the image is in the public/images folder
+      image: '/c2.jpg', // Assuming the image is in the public/images folder
       link: 'https://coursera.org/share/ccb9bc6ebdd51020eb4fc6336a265bd4',
       description: 'Coursera - Google'
     },
     {
       title: 'Attract and Engage Customers with Digital Marketing',
-      image: '/public/c3.jpg', // Assuming the image is in the public/images folder
+      image: '/c3.jpg', // Assuming the image is in the public/images folder
       link: 'https://coursera.org/share/721d09116b09b93e760f865646dd9604',
       description: 'Coursera - Google'
     }
