@@ -18,7 +18,7 @@ import { ProfileImage } from './components/ProfileImage';
 import { TechStack } from './components/TechStack';
 import { ContactForm } from './components/ContactForm';
 
-// Interfaces
+// Keep existing interfaces
 interface Project {
   title: string;
   description: string;
@@ -35,14 +35,14 @@ interface Certificate {
 }
 
 function App() {
-  // State management
+  // Keep existing state management
   const [darkMode, setDarkMode] = useState(() => 
     window.matchMedia('(prefers-color-scheme: dark)').matches
   );
   const [currentProject, setCurrentProject] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Effects
+  // Keep existing effects
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
@@ -51,6 +51,7 @@ function App() {
     }
   }, [darkMode]);
 
+  // Keep existing projects and certificates data
   const projects: Project[] = [
     {
       title: 'Library Management System',
@@ -67,7 +68,7 @@ function App() {
       technologies: ['Python', 'PYQT5']
     },
     {
-      title: 'Digital Dictionary using BST',
+      title: 'Digital Dictionary',
       description: 'A simple DSA focused project which implements BST using C++.',
       image: 'https://images.unsplash.com/photo-1585247226801-bc613c441316?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/mo2daso/DigitalDictionary',
@@ -78,25 +79,25 @@ function App() {
   const certificates: Certificate[] = [
     {
       title: 'Introduction to Business Analysis',
-      image: '/c1.jpg', // Assuming the image is in the public/images folder
+      image: '/c1.jpg',
       link: 'https://coursera.org/share/9bd4efd219ae92710f28855a833d99d8',
       description: 'Coursera - IBM'
     },
     {
       title: 'Foundations of Digital Marketing and E-commerce',
-      image: '/c2.jpg', // Assuming the image is in the public/images folder
+      image: '/c2.jpg',
       link: 'https://coursera.org/share/ccb9bc6ebdd51020eb4fc6336a265bd4',
       description: 'Coursera - Google'
     },
     {
       title: 'Attract and Engage Customers with Digital Marketing',
-      image: '/c3.jpg', // Assuming the image is in the public/images folder
+      image: '/c3.jpg',
       link: 'https://coursera.org/share/721d09116b09b93e760f865646dd9604',
       description: 'Coursera - Google'
     }
   ];
 
-  // Handlers
+  // Keep existing handlers
   const changeProject = useCallback((direction: 'next' | 'prev') => {
     if (isTransitioning) return;
     
@@ -135,15 +136,15 @@ function App() {
   }, [handleKeyPress]);
 
   return (
-    <div className={`min-h-screen ${darkMode ? 'dark:bg-gray-900 dark:text-white' : 'bg-white'} transition-colors duration-300`}>
+    <div className={`min-h-screen ${darkMode ? 'dark:bg-gray-900 dark:text-white' : 'bg-gray-100 text-gray-900'} transition-colors duration-300`}>
       <Navigation 
         darkMode={darkMode} 
         onThemeToggle={() => setDarkMode(!darkMode)} 
         onNavigate={scrollToSection}
       />
 
-      {/* Hero Section */}
-      <section id="home" className="pt-32 pb-20 px-4 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
+      {/* Hero Section - Updated colors */}
+      <section id="home" className="pt-32 pb-20 px-4 bg-gradient-to-r from-gray-100 to-blue-50 dark:from-gray-800 dark:to-gray-900">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl sm:text-6xl font-bold mb-6">
             <TypeAnimation
@@ -168,7 +169,7 @@ function App() {
               repeat={Infinity}
             />
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
+          <p className="text-xl text-gray-700 dark:text-gray-300 mb-8">
             I am Mohammad <span className="text-blue-600 dark:text-purple-400">Soban</span>.
           </p>
           <div className="flex justify-center space-x-4">
@@ -192,18 +193,18 @@ function App() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 bg-white dark:bg-gray-900">
+      {/* About Section - Updated colors */}
+      <section id="about" className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">About Me</h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <ProfileImage />
             <div className="space-y-8">
-              <p className="text-lg text-gray-600 dark:text-gray-300">
+              <p className="text-lg text-gray-700 dark:text-gray-300">
                 Welcome to my portfolio! 
                 I'm Soban, a Computer Science student with a passion for data analysis and AI. 
-                I specialize in Excel, SQL, and Python, and 
-                I'm currently exploring prompt engineering and AI fundamentals to deliver data-driven solutions.
+                I specialize in Excel and Python, and 
+                I'm currently exploring AI fundamentals to deliver data-driven solutions.
               </p>
               <div className="space-y-6">
                 <h3 className="text-xl font-semibold">Soft Skills</h3>
@@ -232,10 +233,6 @@ function App() {
                     <Brain className="w-6 h-6 text-blue-600 dark:text-purple-400" />
                     <span>Analytical Skills</span>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <Zap className="w-6 h-6 text-blue-600 dark:text-purple-400" />
-                    <span>Prompt Engineering</span>
-                  </div>
                 </div>
               </div>
             </div>
@@ -243,15 +240,14 @@ function App() {
         </div>
       </section>
 
-
-        {/* Tech Stack Section */}
-        <section id="tech-stack" className="py-20 bg-gray-50 dark:bg-gray-800">
+      {/* Tech Stack Section - Updated colors */}
+      <section id="tech-stack" className="py-20 bg-gray-100 dark:bg-gray-800">
         <h3 className="text-4xl font-bold mb-12 text-center">Tech Stack</h3>
         <TechStack />
       </section>
       
-      {/* Projects Section with improved transitions */}
-      <section id="projects" className="py-20 bg-white dark:bg-gray-900">
+      {/* Projects Section - Updated colors */}
+      <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">Featured Projects</h2>
           <div className="relative overflow-hidden">
@@ -260,7 +256,7 @@ function App() {
                 isTransitioning ? 'scale-95 opacity-90' : 'scale-100 opacity-100'
               }`}
             >
-              <div className="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-lg">
+              <div className="bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden shadow-lg">
                 <img 
                   src={projects[currentProject].image} 
                   alt={projects[currentProject].title} 
@@ -278,12 +274,12 @@ function App() {
                       <Github className="w-6 h-6" />
                     </a>
                   </div>
-                  <p className="text-gray-600 dark:text-gray-300 mb-6">{projects[currentProject].description}</p>
+                  <p className="text-gray-700 dark:text-gray-300 mb-6">{projects[currentProject].description}</p>
                   <div className="flex flex-wrap gap-3">
                     {projects[currentProject].technologies.map((tech, index) => (
                       <span 
                         key={index}
-                        className="px-4 py-2 bg-gray-100 dark:bg-gray-600 rounded-full text-sm font-medium"
+                        className="px-4 py-2 bg-gray-200 dark:bg-gray-600 rounded-full text-sm font-medium"
                       >
                         {tech}
                       </span>
@@ -293,7 +289,7 @@ function App() {
               </div>
             </div>
 
-            {/* Project Navigation Dots */}
+            {/* Project Navigation */}
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center space-x-2">
               {projects.map((_, index) => (
                 <button
@@ -312,14 +308,14 @@ function App() {
             {/* Arrow Navigation */}
             <button
               onClick={() => changeProject('prev')}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-700/80 p-2 rounded-full shadow-lg hover:scale-110 transition-all duration-300 backdrop-blur-sm"
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-gray-100/80 dark:bg-gray-700/80 p-2 rounded-full shadow-lg hover:scale-110 transition-all duration-300 backdrop-blur-sm"
               aria-label="Previous project"
             >
               <ChevronLeft className="w-6 h-6 text-blue-600 dark:text-purple-400" />
             </button>
             <button
               onClick={() => changeProject('next')}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-700/80 p-2 rounded-full shadow-lg hover:scale-110 transition-all duration-300 backdrop-blur-sm"
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-gray-100/80 dark:bg-gray-700/80 p-2 rounded-full shadow-lg hover:scale-110 transition-all duration-300 backdrop-blur-sm"
               aria-label="Next project"
             >
               <ChevronRight className="w-6 h-6 text-blue-600 dark:text-purple-400" />
@@ -328,78 +324,73 @@ function App() {
         </div>
       </section>
 
-      {/* Certificates Section */}
-      <section id="certificates" className="py-20 bg-gray-50 dark:bg-gray-800"> {/* Added background color */}
-  <div className="max-w-7xl mx-auto px-4">
-    <h2 className="text-3xl font-bold mb-12 text-center">Featured Certificates</h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {certificates.map((certificate, index) => (
-        <div 
-          key={index} 
-          className="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col"
-        >
-          <img 
-            src={certificate.image} 
-            alt={certificate.title} 
-            className="w-full h-64 object-contain p-4 bg-gray-100 dark:bg-gray-600" // Adjusted height and added padding
-          />
-          <div className="p-6 flex flex-col flex-grow">
-            <h3 className="text-xl font-bold mb-2">{certificate.title}</h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">{certificate.description}</p>
-            <a 
-              href={certificate.link}
-              className="text-blue-600 dark:text-purple-400 hover:text-blue-800 dark:hover:text-purple-300 transition-colors"
+      {/* Certificates Section - Updated colors */}
+      <section id="certificates" className="py-20 bg-gray-100 dark:bg-gray-800">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-12 text-center">Featured Certificates</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {certificates.map((certificate, index) => (
+              <div 
+                key={index} 
+                className="bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col"
+              >
+                <img 
+                  src={certificate.image} 
+                  alt={certificate.title} 
+                  className="w-full h-64 object-contain p-4 bg-gray-200 dark:bg-gray-600"
+                />
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-xl font-bold mb-2">{certificate.title}</h3>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4 flex-grow">{certificate.description}</p>
+                  <a 
+                    href={certificate.link}
+                    className="text-blue-600 dark:text-purple-400 hover:text-blue-800 dark:hover:text-purple-300 transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View Certificate
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-end mt-8">
+            <a
+              href="https://www.linkedin.com/in/mohammadsoban/details/certifications/"
+              className="flex items-center text-blue-600 dark:text-purple-400 hover:text-blue-800 dark:hover:text-purple-300 transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Certificate
+              View More on LinkedIn
+              <ExternalLink className="w-4 h-4 ml-2" />
             </a>
           </div>
         </div>
-      ))}
-    </div>
-    {/* View More Link */}
-    <div className="flex justify-end mt-8">
-      <a
-        href="https://www.linkedin.com/in/mohammadsoban/details/certifications/"
-        className="flex items-center text-blue-600 dark:text-purple-400 hover:text-blue-800 dark:hover:text-purple-300 transition-colors"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        View More on LinkedIn
-        <ExternalLink className="w-4 h-4 ml-2" />
-      </a>
-    </div>
-  </div>
-</section>
+      </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 bg-white dark:bg-gray-900"> {/* Reduced height */}
+      {/* Contact Section - Updated colors */}
+      <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">Get In Touch</h2>
-          <div className="flex flex-col md:flex-row gap-12 items-stretch"> {/* Use flex for equal heights */}
-            {/* Contact Form */}
-            <div className="flex-1"> {/* Ensure it takes equal space */}
+          <div className="flex flex-col md:flex-row gap-12 items-stretch">
+            <div className="flex-1">
               <ContactForm />
             </div>
 
-            {/* Right Column (Favorite Quote and Contact Me) */}
-            <div className="flex-1 flex flex-col space-y-6"> {/* Reduced spacing */}
-              {/* Favorite Quote */}
-              <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg h-full flex flex-col justify-center"> {/* Added flex and justify-center */}
+            <div className="flex-1 flex flex-col space-y-6">
+              <div className="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-lg h-full flex flex-col justify-center">
                 <h3 className="text-2xl font-bold mb-4 text-center">Favorite Quote</h3>
                 <div className="text-center">
-                  <p className="text-blue-600 dark:text-purple-400 italic font-serif text-xl leading-relaxed"> {/* Increased text size to text-xl */}
+                  <p className="text-blue-600 dark:text-purple-400 italic font-serif text-xl leading-relaxed">
                     "Nothing Changes if Nothing Changes!"
                   </p>
-                  <p className="text-gray-500 dark:text-gray-400 mt-2 font-medium text-sm tracking-wide">
+                  <p className="text-gray-600 dark:text-gray-400 mt-2 font-medium text-sm tracking-wide">
                     — Godfrey The Great
                   </p>
                 </div>
               </div>
 
-              {/* Contact Me */}
-              <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg border border-gray-100 dark:border-gray-600 h-full"> {/* Added h-full */}
+              <div className="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600 h-full">
                 <h3 className="text-xl font-bold mb-4 text-center">Contact Me</h3>
                 <div className="space-y-4">
                   <div className="flex items-center group">
@@ -429,8 +420,8 @@ function App() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-50 dark:bg-gray-800 py-12 mt-20">
+      {/* Footer - Updated colors */}
+      <footer className="bg-gray-100 dark:bg-gray-800 py-12 mt-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col items-center space-y-6">
             <div className="flex space-x-6">
