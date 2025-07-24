@@ -69,8 +69,8 @@ const techStack: TechStackItem[] = [
     category: 'data-tools'
   },
   {
-    name: 'GitHub',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
+    name: 'Git',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
     category: 'data-tools'
   },
   {
