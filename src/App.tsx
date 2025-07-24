@@ -10,7 +10,9 @@ import {
   Brain, 
   Zap, 
   ChevronLeft,
-  ChevronRight 
+  ChevronRight,
+  Code,
+  Briefcase
 } from 'lucide-react';
 import { TypeAnimation } from 'react-type-animation';
 import { Navigation } from './components/Navigation';
@@ -34,6 +36,14 @@ interface Certificate {
   description: string;
 }
 
+interface Experience {
+  role: string;
+  company: string;
+  duration: string;
+  description: string;
+  certificate: string;
+}
+
 function App() {
   // Keep existing state management
   const [darkMode, setDarkMode] = useState(() => 
@@ -51,49 +61,61 @@ function App() {
     }
   }, [darkMode]);
 
-  // Keep existing projects and certificates data
+  // Updated projects data
   const projects: Project[] = [
     {
-      title: 'Library Management System',
-      description: 'This project uses Java and SQL and aims to modernize library operations, making them more accessible and user-friendly.',
-      image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=1000',
-      github: 'https://github.com/mo2daso/LibraryManagementSystem',
-      technologies: ['Java', 'Java FX', 'SQL']
+      title: 'Movie Recommendation System',
+      description: 'A machine learning based recommendation system that suggests movies based on user preferences and viewing history, implemented with collaborative filtering algorithms.',
+      image: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80&w=1000',
+      github: 'https://github.com/mo2daso/MovieRecommendationSystem',
+      technologies: ['Python', 'Machine Learning', 'Pandas', 'Scikit-learn']
     },
     {
       title: 'Syntax Analyzer',
-      description: 'Using Python and PYQT5, Syntax Analyzer (Parser) is a project designed to perform both lexical and syntactic analysis of programming code.',
+      description: 'Advanced syntax analyzer (parser) that performs both lexical and syntactic analysis of programming code with detailed error reporting and visualization.',
       image: 'https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/mo2daso/SyntaxAnalyzer',
-      technologies: ['Python', 'PYQT5']
+      technologies: ['Python', 'PYQT5', 'Compiler Design']
     },
     {
-      title: 'Digital Dictionary',
-      description: 'A simple DSA focused project which implements BST using C++.',
-      image: 'https://images.unsplash.com/photo-1585247226801-bc613c441316?auto=format&fit=crop&q=80&w=1000',
-      github: 'https://github.com/mo2daso/DigitalDictionary',
-      technologies: ['C++', 'BST']
+      title: 'Funky Fusion',
+      description: 'An innovative web application that combines multiple APIs to create unique user experiences with seamless integration and responsive design.',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000',
+      github: 'https://github.com/mo2daso/FunkyFusion',
+      technologies: ['JavaScript', 'React', 'API Integration']
     }
   ];
 
+  // Updated certificates data
   const certificates: Certificate[] = [
     {
-      title: 'Introduction to Business Analysis',
+      title: 'Supervised Machine Learning: Regression and Classification',
       image: '/c1.jpg',
-      link: 'https://coursera.org/share/9bd4efd219ae92710f28855a833d99d8',
-      description: 'Coursera - IBM'
+      link: 'https://www.coursera.org/account/accomplishments/certificate/ABCD1234',
+      description: 'Coursera - DeepLearning.AI'
     },
     {
-      title: 'Foundations of Digital Marketing and E-commerce',
+      title: 'Howard University Project Management: Professional Certificate',
       image: '/c2.jpg',
-      link: 'https://coursera.org/share/ccb9bc6ebdd51020eb4fc6336a265bd4',
-      description: 'Coursera - Google'
+      link: 'https://www.coursera.org/account/accomplishments/certificate/EFGH5678',
+      description: 'Coursera - Howard University'
     },
     {
-      title: 'Attract and Engage Customers with Digital Marketing',
+      title: 'IBM Data Analyst Professional Certificate',
       image: '/c3.jpg',
-      link: 'https://coursera.org/share/721d09116b09b93e760f865646dd9604',
-      description: 'Coursera - Google'
+      link: 'https://www.coursera.org/account/accomplishments/certificate/IJKL9012',
+      description: 'Coursera - IBM'
+    }
+  ];
+
+  // Experience data
+  const experiences: Experience[] = [
+    {
+      role: 'Project Management Intern',
+      company: 'Trust Nexus',
+      duration: 'March 2025 - June 2025',
+      description: 'Lead and Managed a team of developers for Nexovate Software, a comprehensive project for tech stack recommendatio and helping users develop a project.',
+      certificate: '/intern.jpg'
     }
   ];
 
@@ -153,16 +175,17 @@ function App() {
                 2000,
                 'Hello, I\'m a Developer',
                 2000,
-                'Hello, I\'m a Designer',
-                2000,
-                'Hello, I\'m a Problem Solver',
-                2000,
                 'Hello, I\'m a Lawyer',
                 2000,
-                'Hello, I\'m a Business Analyst',
+                'Hello, I\'m a ML Engineer',
                 2000,
-                'Hello, I\'m a Digital Marketer',
+                'Hello, I\'m a Designer',
+                2000,
+                 'Hello, I\'m an Analyst',
+                2000,
+                'Hello, I\'m a Problem Solver',
                 2000
+               
               ]}
               wrapper="span"
               speed={45}
@@ -201,10 +224,9 @@ function App() {
             <ProfileImage />
             <div className="space-y-8">
               <p className="text-lg text-gray-700 dark:text-gray-300">
-                Welcome to my portfolio! 
-                I'm Soban, a Computer Science student with a passion for data analysis and AI. 
-                I specialize in Excel and Python, and 
-                I'm currently exploring AI fundamentals to deliver data-driven solutions.
+                Hi, I'm Soban — a curious mind with a strong grounding in computer science and legal systems. I'm currently exploring the world of AI and machine learning, with a special focus on prompt engineering and how intelligent technologies can drive real-world impact.
+
+                Passionate about solving problems at the intersection of logic, language, and innovation. Always learning, building, and open to meaningful collaborations.
               </p>
               <div className="space-y-6">
                 <h3 className="text-xl font-semibold">Soft Skills</h3>
@@ -224,6 +246,10 @@ function App() {
                   <div className="flex items-center space-x-2">
                     <Zap className="w-6 h-6 text-blue-600 dark:text-purple-400" />
                     <span>Quick Learner</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Code className="w-6 h-6 text-blue-600 dark:text-purple-400" />
+                    <span>Prompt Engineering</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Zap className="w-6 h-6 text-blue-600 dark:text-purple-400" />
@@ -246,8 +272,51 @@ function App() {
         <TechStack />
       </section>
       
+      {/* Experience Section */}
+      <section id="experience" className="py-20 bg-gray-50 dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-12 text-center">Professional Experience</h2>
+          <div className="grid grid-cols-1 gap-8">
+            {experiences.map((exp, index) => (
+              <div key={index} className="bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden shadow-lg">
+                <div className="p-8 flex flex-col md:flex-row gap-8">
+                  <div className="flex-shrink-0">
+                    <img 
+                      src={exp.certificate} 
+                      alt={`${exp.company} Certificate`} 
+                      className="w-64 h-64 object-contain rounded-lg border border-gray-200 dark:border-gray-600"
+                    />
+                  </div>
+                  <div className="flex-grow">
+                    <h3 className="text-2xl font-bold mb-2">{exp.role}</h3>
+                    <div className="flex items-center text-gray-600 dark:text-gray-300 mb-4">
+                      <Briefcase className="w-5 h-5 mr-2" />
+                      <span>{exp.company}</span>
+                      <span className="mx-2">•</span>
+                      <span>{exp.duration}</span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300 mb-6">{exp.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-end mt-8">
+            <a
+              href="https://www.linkedin.com/in/mohammadsoban/details/experience/"
+              className="flex items-center text-blue-600 dark:text-purple-400 hover:text-blue-800 dark:hover:text-purple-300 transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View More on LinkedIn
+              <ExternalLink className="w-4 h-4 ml-2" />
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Projects Section - Updated colors */}
-      <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-900">
+      <section id="projects" className="py-20 bg-gray-100 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">Featured Projects</h2>
           <div className="relative overflow-hidden">
@@ -325,14 +394,14 @@ function App() {
       </section>
 
       {/* Certificates Section - Updated colors */}
-      <section id="certificates" className="py-20 bg-gray-100 dark:bg-gray-800">
+      <section id="certificates" className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">Featured Certificates</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {certificates.map((certificate, index) => (
               <div 
                 key={index} 
-                className="bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col"
+                className="bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col"
               >
                 <img 
                   src={certificate.image} 
@@ -369,7 +438,7 @@ function App() {
       </section>
 
       {/* Contact Section - Updated colors */}
-      <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-900">
+      <section id="contact" className="py-20 bg-gray-100 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">Get In Touch</h2>
           <div className="flex flex-col md:flex-row gap-12 items-stretch">

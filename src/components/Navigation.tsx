@@ -8,33 +8,28 @@ interface NavigationProps {
 }
 
 export function Navigation({ darkMode, onThemeToggle, onNavigate }: NavigationProps) {
-  // State
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Constants
   const navigationItems = [
-    'home',
-    'about', 
-    'tech-stack', 
-    'projects', 
-    'certificates',
-    'contact'
+    'Home',
+    'About', 
+    'Tech Stack',
+    'Experience',
+    'Projects', 
+    'Certificates',
+    'Contact'
   ];
 
-  // Effects
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 100;
 
-      for (const section of navigationItems) {
+      for (const section of navigationItems.map(item => item.toLowerCase().replace(' ', '-'))) {
         const element = document.getElementById(section);
         if (element) {
           const { offsetTop, offsetHeight } = element;
-          if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + offsetHeight
-          ) {
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
             setActiveSection(section);
             break;
           }
@@ -47,111 +42,77 @@ export function Navigation({ darkMode, onThemeToggle, onNavigate }: NavigationPr
     return () => window.removeEventListener('scroll', handleScroll);
   }, [navigationItems]);
 
-  // Handlers
   const handleNavigation = (sectionId: string) => {
-    setActiveSection(sectionId);
-    onNavigate(sectionId);
+    const formattedId = sectionId.toLowerCase().replace(' ', '-');
+    setActiveSection(formattedId);
+    onNavigate(formattedId);
     setIsMenuOpen(false);
   };
 
-  // UI Classes
-  const buttonBaseClasses = `
-    capitalize text-base font-medium tracking-wide
-    transition-all duration-300 relative px-3 py-2 rounded-lg
-    hover:text-blue-400 dark:hover:text-purple-400
-    focus:outline-none group
-  `;
-
-  const activeButtonClasses = (section: string) => `
-    ${buttonBaseClasses}
-    ${activeSection === section
-      ? 'text-blue-500 dark:text-purple-400'
-      : 'text-gray-700 dark:text-gray-300'
-    }
-  `;
-
   return (
-    <nav className="fixed w-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-lg z-50 transition-colors duration-300">
+    <nav className="fixed w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="h-16 flex justify-center items-center">
-          {/* Mobile Menu Button */}
+        <div className="flex items-center justify-center h-16 relative">
+          {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="absolute left-4 lg:hidden text-gray-700 dark:text-gray-300 focus:outline-none"
+            className="lg:hidden absolute left-4 text-gray-700 dark:text-gray-300"
+            aria-label="Open menu"
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16m-7 6h7"
-              />
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center justify-center space-x-6">
-            {navigationItems.map((section) => (
-              <button
-                key={section}
-                onClick={() => handleNavigation(section)}
-                className={activeButtonClasses(section)}
-              >
-                <span className="relative z-10">
-                  {section.replace('-', ' ')}
-                </span>
-                <div className={`
-                  absolute inset-0 rounded-lg transition-all duration-300
-                  group-hover:bg-blue-500/10 dark:group-hover:bg-purple-500/10
-                  group-hover:shadow-[0_0_15px_rgba(59,130,246,0.5)]
-                  dark:group-hover:shadow-[0_0_15px_rgba(167,139,250,0.5)]
-                  ${activeSection === section
-                    ? 'bg-blue-500/10 dark:bg-purple-500/10 shadow-[0_0_15px_rgba(59,130,246,0.5)] dark:shadow-[0_0_15px_rgba(167,139,250,0.5)]'
-                    : 'opacity-0'
-                  }
-                `} />
-              </button>
-            ))}
-            <div className="pl-4 border-l border-gray-200 dark:border-gray-700">
-              <ThemeToggle darkMode={darkMode} onToggle={onThemeToggle} />
-            </div>
+          {/* Desktop navigation - Centered */}
+          <div className="hidden lg:flex items-center justify-center space-x-8">
+            {navigationItems.map((section) => {
+              const sectionId = section.toLowerCase().replace(' ', '-');
+              return (
+                <button
+                  key={sectionId}
+                  onClick={() => handleNavigation(section)}
+                  className={`relative px-1 py-2 font-medium transition-colors duration-200 text-sm uppercase tracking-wider ${
+                    activeSection === sectionId
+                      ? 'text-blue-600 dark:text-purple-400 font-semibold'
+                      : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100'
+                  }`}
+                >
+                  {section}
+                  {activeSection === sectionId && (
+                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500 dark:bg-purple-400" />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Theme toggle - positioned right */}
+          <div className="absolute right-4">
+            <ThemeToggle darkMode={darkMode} onToggle={onThemeToggle} />
           </div>
         </div>
 
-        {/* Mobile Navigation Menu */}
+        {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="lg:hidden bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-lg mt-2">
-            <div className="flex flex-col space-y-4 p-4">
-              {navigationItems.map((section) => (
-                <button
-                  key={section}
-                  onClick={() => handleNavigation(section)}
-                  className={activeButtonClasses(section)}
-                >
-                  <span className="relative z-10">
-                    {section.replace('-', ' ')}
-                  </span>
-                  <div className={`
-                    absolute inset-0 rounded-lg transition-all duration-300
-                    group-hover:bg-blue-500/10 dark:group-hover:bg-purple-500/10
-                    group-hover:shadow-[0_0_15px_rgba(59,130,246,0.5)]
-                    dark:group-hover:shadow-[0_0_15px_rgba(167,139,250,0.5)]
-                    ${activeSection === section
-                      ? 'bg-blue-500/10 dark:bg-purple-500/10 shadow-[0_0_15px_rgba(59,130,246,0.5)] dark:shadow-[0_0_15px_rgba(167,139,250,0.5)]'
-                      : 'opacity-0'
-                    }
-                  `} />
-                </button>
-              ))}
-              <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
-                <ThemeToggle darkMode={darkMode} onToggle={onThemeToggle} />
-              </div>
+          <div className="lg:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
+            <div className="px-2 pt-2 pb-3 space-y-2">
+              {navigationItems.map((section) => {
+                const sectionId = section.toLowerCase().replace(' ', '-');
+                return (
+                  <button
+                    key={sectionId}
+                    onClick={() => handleNavigation(section)}
+                    className={`block px-3 py-2 rounded-md w-full text-left uppercase tracking-wider text-sm font-medium ${
+                      activeSection === sectionId
+                        ? 'bg-blue-50 dark:bg-gray-800 text-blue-600 dark:text-purple-400 font-semibold'
+                        : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
+                    }`}
+                  >
+                    {section}
+                  </button>
+                );
+              })}
             </div>
           </div>
         )}
