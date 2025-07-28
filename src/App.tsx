@@ -173,7 +173,7 @@ function App() {
               sequence={[
                 'Hello, I\'m a Programmer',
                 2000,
-                'Hello, I\'m a AI Developer',
+                'Hello, I\'m an AI Developer',
                 2000,
                 'Hello, I\'m a Project Manager',
                 2000,
