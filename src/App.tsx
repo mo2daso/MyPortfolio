@@ -78,7 +78,7 @@ function App() {
       technologies: ['Python', 'PYQT5', 'Compiler Design']
     },
     {
-      title: 'Funky Fusion',
+      title: 'E-Commerce Website',
       description: 'An innovative web application that combines multiple APIs to create unique user experiences with seamless integration and responsive design.',
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/mo2daso/FunkyFusion',
@@ -95,13 +95,13 @@ function App() {
       description: 'Coursera - DeepLearning.AI'
     },
     {
-      title: 'Howard University Project Management: Professional Certificate',
+      title: 'Howard University Project Management Essentials',
       image: '/c2.jpg',
       link: 'https://www.coursera.org/account/accomplishments/certificate/EFGH5678',
       description: 'Coursera - Howard University'
     },
     {
-      title: 'IBM Data Analyst Professional Certificate',
+      title: 'IBM Foundations of Business Analysis',
       image: '/c3.jpg',
       link: 'https://www.coursera.org/account/accomplishments/certificate/IJKL9012',
       description: 'Coursera - IBM'
@@ -114,7 +114,7 @@ function App() {
       role: 'Project Management Intern',
       company: 'Trust Nexus',
       duration: 'March 2025 - June 2025',
-      description: 'Lead and Managed a team of developers for Nexovate Software, a comprehensive project for tech stack recommendatio and helping users develop a project.',
+      description: 'During my internship, I led and managed a team of developers and designers on Nexovate, a comprehensive platform focused on recommending the right tech stacks and guiding users in developing their own projects. As the project manager, I was responsible for coordinating tasks, setting goals, and ensuring smooth collaboration across the team. This experience helped me build strong project management skills. I became proficient with tools like Jira and Trello for task tracking and team coordination. More importantly, I learned how to communicate effectively across different roles, handle feedback, and keep the team motivated and aligned. It was a great opportunity to develop my leadership, teamwork, and problem-solving abilities in a real-world tech environment.',
       certificate: '/intern.jpg'
     }
   ];
@@ -173,13 +173,9 @@ function App() {
               sequence={[
                 'Hello, I\'m a Programmer',
                 2000,
-                'Hello, I\'m a Developer',
+                'Hello, I\'m a ML Developer',
                 2000,
-                'Hello, I\'m a Lawyer',
-                2000,
-                'Hello, I\'m a ML Engineer',
-                2000,
-                'Hello, I\'m a Designer',
+                'Hello, I\'m a Project Manager',
                 2000,
                  'Hello, I\'m an Analyst',
                 2000,
@@ -224,9 +220,9 @@ function App() {
             <ProfileImage />
             <div className="space-y-8">
               <p className="text-lg text-gray-700 dark:text-gray-300">
-                Hi, I'm Soban — a curious mind with a strong grounding in computer science and legal systems. I'm currently exploring the world of AI and machine learning, with a special focus on prompt engineering and how intelligent technologies can drive real-world impact.
+                HHi, I'm Soban. I'm a curious learner with a strong foundation in both computer science and law. I'm currently exploring the world of AI and machine learning, with a particular interest in prompt engineering and how intelligent technologies can make a real difference in the world.
 
-                Passionate about solving problems at the intersection of logic, language, and innovation. Always learning, building, and open to meaningful collaborations.
+I'm passionate about solving problems where logic, language, and innovation come together. I'm always learning, always building, and open to meaningful collaborations and conversations.
               </p>
               <div className="space-y-6">
                 <h3 className="text-xl font-semibold">Soft Skills</h3>
