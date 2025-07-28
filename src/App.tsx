@@ -101,7 +101,7 @@ function App() {
       description: 'Coursera - Howard University'
     },
     {
-      title: 'IBM Foundations of Business Analysis',
+      title: 'IBM Introduction to Business Analysis',
       image: '/c3.jpg',
       link: 'https://www.coursera.org/account/accomplishments/certificate/IJKL9012',
       description: 'Coursera - IBM'
@@ -114,7 +114,7 @@ function App() {
       role: 'Project Management Intern',
       company: 'Trust Nexus',
       duration: 'March 2025 - June 2025',
-      description: 'During my internship, I led and managed a team of developers and designers on Nexovate, a comprehensive platform focused on recommending the right tech stacks and guiding users in developing their own projects. As the project manager, I was responsible for coordinating tasks, setting goals, and ensuring smooth collaboration across the team. This experience helped me build strong project management skills. I became proficient with tools like Jira and Trello for task tracking and team coordination. More importantly, I learned how to communicate effectively across different roles, handle feedback, and keep the team motivated and aligned. It was a great opportunity to develop my leadership, teamwork, and problem-solving abilities in a real-world tech environment.',
+      description: 'During my internship, I led a team of developers and designers on Nexovate, a platform that recommends tech stacks and helps users build their projects. As project manager, I coordinated tasks, set goals, and ensured smooth collaboration. I gained hands-on experience with tools like Jira and Trello, and strengthened my skills in communication, leadership, and problem-solving. This role gave me a strong foundation in project management and cross-functional teamwork within a real-world tech environment.',
       certificate: '/intern.jpg'
     }
   ];
@@ -220,7 +220,7 @@ function App() {
             <ProfileImage />
             <div className="space-y-8">
               <p className="text-lg text-gray-700 dark:text-gray-300">
-                HHi, I'm Soban. I'm a curious learner with a strong foundation in both computer science and law. I'm currently exploring the world of AI and machine learning, with a particular interest in prompt engineering and how intelligent technologies can make a real difference in the world.
+                Hi, I'm Soban. I'm a curious learner with a strong foundation in both computer science and law. I'm currently exploring the world of AI and machine learning, with a particular interest in prompt engineering and how intelligent technologies can make a real difference in the world.
 
 I'm passionate about solving problems where logic, language, and innovation come together. I'm always learning, always building, and open to meaningful collaborations and conversations.
               </p>
